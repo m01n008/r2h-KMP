@@ -8,7 +8,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.cyphergames.r2h.Greeting
 import com.cyphergames.r2h.presentation.MainViewAndroid
 
 class MainActivity : ComponentActivity() {
