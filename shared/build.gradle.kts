@@ -1,9 +1,12 @@
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
+    kotlin("plugin.serialization")
     id("com.android.library")
     id("org.jetbrains.compose")
+    id("com.squareup.sqldelight")
 }
+val sqldelightVersion = extra["sqldelight.version"] as String
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
@@ -38,8 +41,31 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.material)
                 implementation(compose.ui)
+                implementation("com.squareup.sqldelight:runtime:$sqldelightVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+
                 //put your multiplatform dependencies here
             }
+        }
+
+        val androidMain by getting {
+            dependencies{
+                implementation("com.squareup.sqldelight:android-driver:$sqldelightVersion")
+            }
+        }
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+
+        val iosMain by getting {
+            dependencies{
+                dependsOn(commonMain)
+                implementation("com.squareup.sqldelight:native-driver:$sqldelightVersion")
+            }
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
         }
         val commonTest by getting {
             dependencies {
@@ -48,6 +74,13 @@ kotlin {
         }
     }
 }
+sqldelight {
+    database("r2hDatabase") {
+        packageName = "com.cyphergames.r2h"
+        sourceFolders = listOf("sqldelight")
+    }
+}
+
 
 android {
     namespace = "com.cyphergames.r2h"

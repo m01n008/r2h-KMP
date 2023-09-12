@@ -4,7 +4,11 @@ plugins {
     id("com.android.library").apply(false)
     kotlin("android").apply(false)
     kotlin("multiplatform").apply(false)
+    kotlin("plugin.serialization").apply(false)
     id("org.jetbrains.compose").apply(false)
+    id("com.squareup.sqldelight").apply(false)
+
+
 }
 
 
