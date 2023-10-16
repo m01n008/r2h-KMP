@@ -57,7 +57,10 @@ fun DashboardScreen() {
                          verticalArrangement = Arrangement.SpaceEvenly
                     ) {
 
-                         Text(modifier = Modifier.padding(4.dp), text = "pick-up: ")
+                         Text(modifier = Modifier.padding(4.dp),
+                              fontSize = 14.sp,
+                              fontFamily = FontFamily.Monospace,
+                              text = "pick-up: ")
                          Canvas(modifier = Modifier.fillMaxWidth().height(1.dp)) {
                               drawLine(
                                    color = Palette.PakGreen,
@@ -66,7 +69,10 @@ fun DashboardScreen() {
                                    pathEffect = pathEffect
                               )
                          }
-                         Text(modifier = Modifier.padding(4.dp), text = "drop-off: ")
+                         Text(modifier = Modifier.padding(4.dp),
+                              fontSize = 14.sp,
+                              fontFamily = FontFamily.Monospace,
+                              text = "drop-off: ")
                     }
                }
                Card(
@@ -100,9 +106,10 @@ fun DashboardScreen() {
                          ) {
                               Text(
                                    textAlign = TextAlign.Center,
-                                   text = "Find Ride",
                                    fontSize = 22.sp,
-                                   fontFamily = FontFamily.Monospace
+                                   fontFamily = FontFamily.Monospace,
+                                   text = "Find Ride"
+
                               )
                          }
                     }
