@@ -1,4 +1,4 @@
-package com.cyphergames.r2h.presentation
+package com.cyphergames.r2h.presentation.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,7 +16,7 @@ import com.cyphergames.r2h.style.Palette
 @Composable
 fun LogoScreen(){
     Surface(modifier = Modifier.fillMaxSize(),
-            color = Palette.PakistanGreen) {
+            color = Palette.PakGreen) {
 
         Column (
             verticalArrangement = Arrangement.Center,
@@ -34,6 +34,7 @@ fun LogoScreen(){
 
 
             )
+
         }
 
     }
