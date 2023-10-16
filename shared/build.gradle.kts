@@ -40,6 +40,7 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material)
+                implementation(compose.material3)
                 implementation(compose.ui)
                 implementation("com.squareup.sqldelight:runtime:$sqldelightVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")

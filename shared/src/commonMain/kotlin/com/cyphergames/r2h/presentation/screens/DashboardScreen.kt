@@ -7,21 +7,19 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.PathEffect
-import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalViewConfiguration
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.toSize
+import androidx.compose.ui.unit.sp
 import com.cyphergames.r2h.style.Palette
 
 @Composable
@@ -77,16 +75,40 @@ fun DashboardScreen() {
                     elevation = 10.dp,
                     shape = RoundedCornerShape(24.dp)
                ) {
-                    LazyRow(
-                         modifier = Modifier.fillMaxSize()
-                    )
-                    {
-                         items(20){
-                              it -> CardTile(it)
+
+                    Column( modifier = Modifier.fillMaxSize(),
+                         horizontalAlignment = Alignment.CenterHorizontally,
+                         verticalArrangement = Arrangement.SpaceBetween) {
+
+                         LazyRow(
+                              modifier = Modifier.fillMaxWidth()
+                         )
+                         {
+                              items(20) { it ->
+                                   CardTile(it)
+                              }
+
                          }
 
+
+                         ElevatedButton(
+                              onClick = {},
+                              modifier = Modifier.height(80.dp).fillMaxWidth().padding(14.dp),
+                              colors = ButtonDefaults.elevatedButtonColors(
+                                   containerColor = Palette.Cream
+                              ),
+                         ) {
+                              Text(
+                                   textAlign = TextAlign.Center,
+                                   text = "Find Ride",
+                                   fontSize = 22.sp,
+                                   fontFamily = FontFamily.Monospace
+                              )
+                         }
                     }
                }
+
+
 
           }
 
@@ -106,6 +128,8 @@ fun CardTile(value: Int){
      ) {
           Text(modifier = Modifier.wrapContentHeight(Alignment.CenterVertically),
                textAlign = TextAlign.Center,
+               fontSize = 18.sp,
+               fontFamily = FontFamily.Monospace,
                text = "Tile $value")
      }
 }
